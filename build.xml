@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build">
+
+<!-- APPLICATION METADATA -->
+<property name="masysma.target"  value="jexer"/> 
+<property name="mdpc.name"       value="mdvl-jexer"/>
+<property name="mdpc.section"    value="java"/>
+<property name="mdpc.descrs"     value="Library for Java Console UIs"/>
+<property name="mdpc.arch"       value="any"/>
+<property name="mdpc.descrl">
+ Jexer is a high-level API for creating Java applications which provide
+ an interactive text based user interface in the style of edit.com,
+ scandisk and other applications from times far ago. These GUIs are still
+ efficient and have significant advantages over regular UIs especially for
+ console-focused workflows.
+</property>
+<property name="mdpc.copyright" value="Copyright (c) 2013-2019 Kevin Lamonte"/>
+<property name="mdpc.lblock">
+License: MIT
+ The MIT License (MIT)
+ .
+ Copyright (c) 2013-2019 Kevin Lamonte
+ .
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</property>
+
+<property name="mdpc.file.install"
+			value="build/build/jar/jexer.jar /usr/share/java"/>
+
+<!-- PART OF TPL HERE FOR USE IN BUILD -->
+<property environment="env"/>
+<condition property="masysma.internal.includepath.rel" value="${env.MDVL_CI_PHOENIX_ROOT}" else=".."><isset property="env.MDVL_CI_PHOENIX_ROOT"/></condition>
+<property name="masysma.internal.includepath" location="${masysma.internal.includepath.rel}"/>
+
+<!-- SPECIFIC BUILD -->
+<target name="build">
+	<mkdir dir="build"/>
+	<copy todir="build">
+		<fileset dir="${masysma.internal.includepath}/x-artifacts/in/jexer-git"/>
+	</copy>
+	<ant dir="build"/>
+</target>
+
+<target name="clean"><delete dir="build"/></target>
+<target name="dist-clean" depends="clean"><delete file="jexer.jar"/></target>
+
+<!-- CI INTEGRATION -->
+<target name="package_triggered" depends="package">
+	<property name="masysma.ci.trigger" value="newver"/>
+</target>
+
+<!-- TPL IMPORT (PARTIALLY GIVEN ABOVE) -->
+<property name="masysma.internal.loadpath" value="${masysma.internal.includepath}/co-build/ant-build-template.xml"/>
+<condition property="masysma.internal.load" value="file://${masysma.internal.loadpath}" else="https://raw.githubusercontent.com/m7a/co-build/master/ant-build-template.xml"><resourceexists><file file="${masysma.internal.loadpath}"/></resourceexists></condition>
+<import><url url="${masysma.internal.load}"/></import>
+
+</project>
