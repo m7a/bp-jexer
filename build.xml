@@ -16,11 +16,7 @@
 </property>
 <property name="mdpc.copyright" value="Copyright (c) 2013-2019 Kevin Lamonte"/>
 <property name="mdpc.lblock">
-License: MIT
- The MIT License (MIT)
- .
- Copyright (c) 2013-2019 Kevin Lamonte
- .
+License: Expat
  Permission is hereby granted, free of charge, to any person obtaining
  a copy of this software and associated documentation files (the
  "Software"), to deal in the Software without restriction, including
@@ -50,12 +46,29 @@ License: MIT
 <property name="masysma.internal.includepath" location="${masysma.internal.includepath.rel}"/>
 
 <!-- SPECIFIC BUILD -->
-<target name="build">
+<target name="copy_build">
 	<mkdir dir="build"/>
 	<copy todir="build">
 		<fileset dir="${masysma.internal.includepath}/x-artifacts/in/jexer-git"/>
 	</copy>
+</target>
+
+<target name="build" depends="copy_build">
 	<ant dir="build"/>
+</target>
+
+<!-- to be invoked externally -->
+<target name="doc" depends="copy_build">
+	<!-- https://stackoverflow.com/questions/11049807 -->
+        <copy tofile="build/build.xml.new" file="build/build.xml">
+		<filterchain>
+			<linecontains negate="true">
+			<contains value="additionalparam=&quot;--frames&quot;"/>
+			</linecontains>
+		</filterchain>
+        </copy>
+	<move tofile="build/build.xml" file="build/build.xml.new"/>
+	<ant dir="build" target="doc"/>
 </target>
 
 <target name="clean"><delete dir="build"/></target>
