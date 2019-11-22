@@ -46,19 +46,19 @@ License: Expat
 <property name="masysma.internal.includepath" location="${masysma.internal.includepath.rel}"/>
 
 <!-- SPECIFIC BUILD -->
-<target name="copy_build">
-	<mkdir dir="build"/>
-	<copy todir="build">
-		<fileset dir="${masysma.internal.includepath}/x-artifacts/in/jexer-git"/>
-	</copy>
+<target name="download">
+	<masysma_require_artifact
+			masysmaartifact="jexer.git"
+			masysmaatarget="build"
+			masysmaadef="https://gitlab.com/klamonte/jexer.git/"/>
 </target>
 
-<target name="build" depends="copy_build">
+<target name="build" depends="download">
 	<ant dir="build"/>
 </target>
 
 <!-- to be invoked externally -->
-<target name="doc" depends="copy_build">
+<target name="doc" depends="download">
 	<!-- https://stackoverflow.com/questions/11049807 -->
         <copy tofile="build/build.xml.new" file="build/build.xml">
 		<filterchain>
