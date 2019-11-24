@@ -1,3 +1,9 @@
+mdvl-jexer (1.0.1) stable; urgency=medium
+
+  * Build updated package to find out if a bug can be solved this way.
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Sun, 24 Nov 2019 18:24:00 +0100
+
 mdvl-jexer (1.0.0) stable; urgency=medium
 
   * Package created with MDPC 2
