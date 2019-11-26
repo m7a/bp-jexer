@@ -1,3 +1,9 @@
+mdvl-jexer (1.0.2) stable; urgency=medium
+
+  * Build updated package to install fix for bug jexer#68
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Tue, 26 Nov 2019 18:28:17 +0100
+
 mdvl-jexer (1.0.1) stable; urgency=medium
 
   * Build updated package to find out if a bug can be solved this way.
