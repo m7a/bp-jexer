@@ -1,3 +1,9 @@
+mdvl-jexer (1.0.3) stable; urgency=medium
+
+  * Update to trigger CI.
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Fri, 20 Dec 2019 00:36:46 +0100
+
 mdvl-jexer (1.0.2) stable; urgency=medium
 
   * Build updated package to install fix for bug jexer#68
