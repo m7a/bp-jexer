@@ -1,3 +1,9 @@
+mdvl-jexer (1.0.4) stable; urgency=medium
+
+  * Update to trigger CI (retry after missing dependency error).
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Fri, 20 Dec 2019 00:38:05 +0100
+
 mdvl-jexer (1.0.3) stable; urgency=medium
 
   * Update to trigger CI.
