@@ -6,7 +6,7 @@
 <property name="mdpc.name"       value="mdvl-jexer"/>
 <property name="mdpc.section"    value="java"/>
 <property name="mdpc.descrs"     value="Library for Java Console UIs"/>
-<property name="mdpc.arch"       value="any"/>
+<property name="mdpc.arch"       value="all"/>
 <property name="mdpc.descrl">
  Jexer is a high-level API for creating Java applications which provide
  an interactive text based user interface in the style of edit.com,
